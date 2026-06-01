@@ -1,607 +1,605 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Analyst Portfolio</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --panel-2: #1f2937;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --accent: #f97316;
-      --accent-2: #38bdf8;
-      --border: rgba(255,255,255,0.08);
-      --shadow: 0 20px 50px rgba(0,0,0,0.25);
-      --radius: 20px;
-      --max: 1150px;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tarek Guesmi — Data Analyst & BI Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cobalt:      #014AAD;
+    --cobalt-dark: #013a8a;
+    --cobalt-deep: #012d6b;
+    --mist:        #CBDFEE;
+    --mist-mid:    #a8c8e0;
+    --mist-light:  #e6f0f8;
+    --black:       #000000;
+    --dark:        #050d1a;
+    --card:        #ffffff;
+    --card-shadow: rgba(1,74,173,0.10);
+    --text-dark:   #0a1628;
+    --text-body:   #2c3e56;
+    --text-muted:  #5a7a96;
+    --border:      rgba(1,74,173,0.15);
+    --border2:     rgba(1,74,173,0.30);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--mist); color: var(--text-dark); font-family: 'Poppins', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--mist); }
+  ::-webkit-scrollbar-thumb { background: var(--cobalt); border-radius: 3px; }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0b1222 0%, #111827 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 0 5rem; height: 68px; background: rgba(203,223,238,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border2); }
+  .nav-logo { font-weight: 800; font-size: 1.1rem; color: var(--cobalt); letter-spacing: -0.01em; }
+  .nav-logo span { color: var(--text-dark); }
+  .nav-center { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-center a { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; position: relative; }
+  .nav-center a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--cobalt); transition: width 0.3s; }
+  .nav-center a:hover, .nav-center a.active { color: var(--cobalt); }
+  .nav-center a:hover::after, .nav-center a.active::after { width: 100%; }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .lang-toggle { display: flex; align-items: center; background: var(--cobalt); border-radius: 100px; padding: 3px; gap: 2px; }
+  .lang-btn { font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; border: none; background: transparent; color: rgba(255,255,255,0.6); cursor: pointer; padding: 0.3rem 0.75rem; border-radius: 100px; transition: all 0.2s; }
+  .lang-btn.active { background: #fff; color: var(--cobalt); }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; padding: 9rem 5rem 5rem; gap: 5rem; position: relative; overflow: hidden; background: #fff; border-bottom: 1px solid var(--border2); }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 70% at 85% 40%, rgba(1,74,173,0.06) 0%, transparent 70%), radial-gradient(ellipse 30% 40% at 5% 80%, rgba(1,74,173,0.03) 0%, transparent 60%); pointer-events: none; }
+  .hero-left { position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(1,74,173,0.10); border: 1px solid rgba(1,74,173,0.25); padding: 0.4rem 1.1rem; border-radius: 100px; font-size: 0.72rem; font-weight: 600; color: var(--cobalt); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--cobalt); animation: blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+  h1.hero-name { font-size: clamp(2rem, 4vw, 3.8rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 0.4rem; color: var(--text-dark); }
+  h1.hero-name .blue { color: var(--cobalt); }
+  .hero-role { font-size: 0.9rem; font-weight: 500; color: var(--cobalt); margin-bottom: 1.2rem; letter-spacing: 0.01em; font-style: italic; }
+  .hero-bio { font-size: 0.88rem; color: var(--text-body); max-width: 560px; line-height: 1.85; margin-bottom: 2rem; }
+  .hero-bio strong { color: var(--text-dark); font-weight: 700; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--cobalt); color: #fff; padding: 0.85rem 2rem; font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border-radius: 6px; border: 2px solid var(--cobalt); transition: all 0.25s; cursor: pointer; }
+  .btn-primary:hover { background: var(--cobalt-dark); border-color: var(--cobalt-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(1,74,173,0.30); }
+  .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--cobalt); padding: 0.85rem 2rem; font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border-radius: 6px; border: 2px solid var(--cobalt); transition: all 0.25s; }
+  .btn-outline:hover { background: var(--cobalt); color: #fff; transform: translateY(-2px); }
+  .hero-stats { display: flex; gap: 2.5rem; padding-top: 2.5rem; border-top: 2px solid var(--border2); }
+  .stat-num { font-size: 1.7rem; font-weight: 900; color: var(--cobalt); line-height: 1; letter-spacing: -0.03em; }
+  .stat-label { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
+  .hero-right { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; }
+  .hero-card { background: var(--card); border: 1px solid var(--border2); border-radius: 20px; padding: 2.5rem; width: 100%; max-width: 400px; box-shadow: 0 20px 60px var(--card-shadow); position: relative; overflow: hidden; }
+  .hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--cobalt), var(--mist-mid)); }
+  .hero-card-title { font-size: 0.68rem; font-weight: 800; color: var(--cobalt); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .tech-pill { background: rgba(1,74,173,0.08); border: 1px solid rgba(1,74,173,0.22); color: var(--cobalt); font-size: 0.72rem; font-weight: 600; padding: 0.32rem 0.85rem; border-radius: 100px; letter-spacing: 0.02em; }
+  .card-divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+  .currently-label { font-size: 0.65rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .currently-val { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); }
+  .avail-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,180,90,0.08); border: 1px solid rgba(0,180,90,0.25); border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.7rem; font-weight: 700; color: #00874a; margin-top: 1rem; letter-spacing: 0.05em; }
+  .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #00874a; animation: blink 2s infinite; }
 
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
+  /* SECTIONS */
+  section { padding: 6rem 5rem; }
+  .section-eyebrow { font-size: 0.7rem; font-weight: 800; color: var(--cobalt); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.7rem; }
+  .section-eyebrow::before { content: ''; display: block; width: 22px; height: 3px; background: var(--cobalt); border-radius: 2px; }
+  h2.section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--text-dark); letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 0.8rem; }
+  .section-sub { font-size: 0.92rem; color: var(--text-body); max-width: 500px; line-height: 1.85; margin-bottom: 3rem; }
 
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(15, 23, 42, 0.75);
-      border-bottom: 1px solid var(--border);
-    }
+  /* SKILLS */
+  #skills { background: var(--mist); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skill-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+  .skill-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cobalt), var(--mist-mid)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .skill-card:hover { border-color: var(--border2); transform: translateY(-5px); box-shadow: 0 16px 40px var(--card-shadow); }
+  .skill-card:hover::after { transform: scaleX(1); }
+  .skill-icon { width: 52px; height: 52px; background: var(--cobalt); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.4rem; box-shadow: 0 4px 14px rgba(1,74,173,0.25); }
+  .skill-icon svg { width: 24px; height: 24px; stroke: #ffffff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .skill-cat { font-size: 0.65rem; font-weight: 800; color: var(--cobalt); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.35rem; }
+  .skill-name { font-size: 1rem; font-weight: 800; color: var(--text-dark); margin-bottom: 1rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .stag { font-size: 0.68rem; font-weight: 600; padding: 0.25rem 0.65rem; border-radius: 5px; border: 1px solid var(--border2); color: var(--cobalt); background: rgba(1,74,173,0.06); letter-spacing: 0.02em; }
+  .stag.light { border-color: var(--border); color: var(--text-muted); background: transparent; }
 
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
-      gap: 20px;
-    }
+  /* PROJECTS */
+  #projects { background: #fff; }
+  .projects-list { display: flex; flex-direction: column; gap: 3rem; }
+  .project-card { background: var(--card); border: 1px solid var(--border2); border-radius: 18px; overflow: hidden; display: grid; grid-template-columns: 1.1fr 1fr; min-height: 380px; box-shadow: 0 4px 24px var(--card-shadow); transition: box-shadow 0.3s, transform 0.3s; }
+  .project-card:hover { box-shadow: 0 20px 60px rgba(1,74,173,0.16); transform: translateY(-4px); }
+  .project-card.reverse { direction: rtl; }
+  .project-card.reverse > * { direction: ltr; }
+  .project-media { position: relative; background: #fff; overflow: hidden; min-height: 320px; }
+  .project-media video, .project-media img { width: 100%; height: 100%; object-fit: contain; background: #fff; display: block; transition: transform 0.5s; }
+  .project-card:hover .project-media video, .project-card:hover .project-media img { transform: scale(1.02); }
+  .media-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(1,74,173,0.12) 0%, transparent 55%); pointer-events: none; }
+  .proj-num { position: absolute; bottom: 1rem; right: 1.2rem; font-size: 4rem; font-weight: 900; color: rgba(1,74,173,0.07); line-height: 1; letter-spacing: -0.05em; }
+  .project-info { padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; }
+  .proj-meta { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .proj-sector { font-size: 0.65rem; font-weight: 800; color: var(--cobalt); letter-spacing: 0.14em; text-transform: uppercase; }
+  .proj-year { font-size: 0.68rem; color: var(--text-muted); }
+  .proj-title { font-size: 1.35rem; font-weight: 900; color: var(--text-dark); line-height: 1.15; letter-spacing: -0.02em; }
+  .proj-subtitle { font-size: 0.8rem; color: var(--cobalt); font-weight: 600; font-style: italic; }
+  .proj-desc { font-size: 0.83rem; color: var(--text-body); line-height: 1.85; flex: 1; }
+  .proj-impact { background: rgba(1,74,173,0.06); border-left: 3px solid var(--cobalt); padding: 0.85rem 1rem; font-size: 0.78rem; color: var(--cobalt-dark); font-style: italic; border-radius: 0 8px 8px 0; }
+  .proj-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .ptag { font-size: 0.67rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 5px; border: 1px solid rgba(1,74,173,0.25); color: var(--cobalt); background: rgba(1,74,173,0.07); letter-spacing: 0.03em; }
+  .proj-links { display: flex; gap: 1rem; }
+  .plink { font-size: 0.73rem; font-weight: 700; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+  .plink:hover { color: var(--cobalt); }
 
-    .brand {
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
+  /* CERTIFICATIONS */
+  #certifications { background: var(--mist); }
+  .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .cert-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 1.8rem; display: flex; flex-direction: column; gap: 0.7rem; transition: all 0.3s; position: relative; overflow: hidden; }
+  .cert-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cobalt), var(--mist-mid)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .cert-card:hover { border-color: var(--border2); transform: translateY(-5px); box-shadow: 0 14px 36px var(--card-shadow); }
+  .cert-card:hover::before { transform: scaleX(1); }
+  .cert-badge { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px; width: fit-content; }
+  .cert-badge.nvidia { background: rgba(118,185,0,0.10); border: 1px solid rgba(118,185,0,0.3); color: #4a7a00; }
+  .cert-badge.datacamp { background: rgba(1,74,173,0.10); border: 1px solid rgba(1,74,173,0.28); color: var(--cobalt); }
+  .cert-badge.microsoft { background: rgba(0,120,212,0.10); border: 1px solid rgba(0,120,212,0.30); color: #0078d4; }
+  .cert-name { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); line-height: 1.35; }
+  .cert-id { font-size: 0.66rem; color: var(--text-muted); font-family: monospace; }
+  .cert-year { font-size: 0.72rem; font-weight: 700; color: var(--cobalt); margin-top: auto; }
 
-    .brand span { color: var(--accent); }
+  /* CONTACT */
+  #contact { background: #fff; }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-left h3 { font-size: 1.7rem; font-weight: 900; color: var(--text-dark); letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.15; }
+  .contact-left p { font-size: 0.88rem; color: var(--text-body); line-height: 1.9; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 0.9rem; }
+  .ci { display: flex; align-items: center; gap: 1.2rem; padding: 1.1rem 1.4rem; background: var(--mist-light); border: 1px solid var(--border2); border-radius: 10px; text-decoration: none; transition: all 0.25s; }
+  .ci:hover { border-color: var(--cobalt); transform: translateX(6px); box-shadow: 0 6px 20px var(--card-shadow); }
+  .ci-icon { width: 38px; height: 38px; background: rgba(1,74,173,0.10); border: 1px solid rgba(1,74,173,0.22); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; color: var(--cobalt); font-weight: 700; }
+  .ci-label { font-size: 0.63rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.18rem; }
+  .ci-value { font-size: 0.86rem; font-weight: 600; color: var(--text-dark); }
+  .contact-right { background: var(--cobalt); border-radius: 18px; padding: 3rem; position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(1,74,173,0.30); }
+  .contact-right::before { content: ''; position: absolute; top: -60px; right: -60px; width: 250px; height: 250px; background: rgba(203,223,238,0.08); border-radius: 50%; }
+  .contact-right h4 { font-size: 1.5rem; font-weight: 900; color: #fff; margin-bottom: 0.8rem; letter-spacing: -0.02em; line-height: 1.2; position: relative; z-index: 1; }
+  .contact-right p { font-size: 0.85rem; color: rgba(203,223,238,0.8); line-height: 1.85; margin-bottom: 2rem; position: relative; z-index: 1; }
+  .contact-right .avail-badge { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); color: #fff; margin-bottom: 2rem; position: relative; z-index: 1; }
+  .contact-right .avail-dot { background: #7fff9e; }
+  .btn-white { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--cobalt); padding: 0.9rem 2rem; font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; border-radius: 8px; width: 100%; justify-content: center; transition: all 0.25s; position: relative; z-index: 1; }
+  .btn-white:hover { background: var(--mist); transform: translateY(-2px); }
 
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+  /* FOOTER */
+  footer { background: var(--black); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 0.75rem; color: rgba(203,223,238,0.5); font-weight: 400; }
+  .footer-logo { font-size: 1rem; font-weight: 900; color: var(--cobalt); }
 
-    .nav-links a:hover { color: var(--text); }
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .hero {
-      padding: 72px 0 40px;
-    }
+  /* DIVIDER */
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border2), transparent); margin: 0 5rem; }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 8px 14px;
-      border: 1px solid rgba(249,115,22,0.25);
-      background: rgba(249,115,22,0.08);
-      color: #fed7aa;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(2.3rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
-      letter-spacing: -0.04em;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 640px;
-      margin: 0 0 26px;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      border-color: transparent;
-      box-shadow: var(--shadow);
-    }
-
-    .btn-primary:hover { transform: translateY(-2px); }
-    .btn-secondary {
-      background: rgba(255,255,255,0.02);
-      color: var(--text);
-    }
-
-    .stat-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .stat-card, .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .stat-card {
-      padding: 18px;
-    }
-
-    .stat-card h3 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-
-    .stat-card p {
-      margin: 6px 0 0;
-      font-size: 0.92rem;
-    }
-
-    .hero-card {
-      padding: 18px;
-      overflow: hidden;
-    }
-
-    .mockup {
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: #fff;
-    }
-
-    .mockup-top {
-      display: flex;
-      gap: 8px;
-      padding: 12px 14px;
-      background: #f8fafc;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #cbd5e1;
-    }
-
-    .mockup-body {
-      padding: 18px;
-      background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
-      color: #0f172a;
-    }
-
-    .mini-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .mini-card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      padding: 12px;
-    }
-
-    .bar-chart {
-      display: flex;
-      align-items: end;
-      gap: 12px;
-      height: 160px;
-      padding: 12px 0 2px;
-    }
-
-    .bar {
-      flex: 1;
-      border-radius: 12px 12px 4px 4px;
-      background: linear-gradient(180deg, var(--accent), #fb923c);
-    }
-
-    .section {
-      padding: 38px 0;
-    }
-
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(1.7rem, 3vw, 2.5rem);
-      margin: 0;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 650px;
-    }
-
-    .about-grid, .projects-grid, .skills-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .about-grid { grid-template-columns: 1fr 1fr; }
-    .projects-grid { grid-template-columns: repeat(3, 1fr); }
-    .skills-grid { grid-template-columns: repeat(4, 1fr); }
-
-    .card {
-      padding: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      height: 100%;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .project-cover {
-      height: 180px;
-      border-radius: 16px;
-      margin-bottom: 16px;
-      background:
-        linear-gradient(135deg, rgba(249,115,22,0.95), rgba(56,189,248,0.9)),
-        #fff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-cover::before,
-    .project-cover::after {
-      content: "";
-      position: absolute;
-      background: rgba(255,255,255,0.22);
-      border-radius: 18px;
-    }
-
-    .project-cover::before {
-      width: 68%;
-      height: 18px;
-      left: 16px;
-      top: 18px;
-    }
-
-    .project-cover::after {
-      width: 86%;
-      height: 88px;
-      left: 16px;
-      bottom: 16px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 14px 0 16px;
-    }
-
-    .tag {
-      font-size: 0.82rem;
-      color: #dbeafe;
-      background: rgba(56,189,248,0.12);
-      border: 1px solid rgba(56,189,248,0.18);
-      border-radius: 999px;
-      padding: 7px 10px;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .project-links a {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: white;
-      background: rgba(255,255,255,0.08);
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-
-    .skill-pill {
-      padding: 18px;
-      text-align: center;
-      font-weight: 700;
-      color: var(--text);
-      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
-      border: 1px solid var(--border);
-      border-radius: 18px;
-    }
-
-    .contact {
-      text-align: center;
-    }
-
-    .contact .card {
-      padding: 34px;
-    }
-
-    .footer {
-      padding: 28px 0 50px;
-      color: #94a3b8;
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 1024px) {
-      .hero-grid,
-      .about-grid,
-      .projects-grid,
-      .skills-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .hero-grid,
-      .about-grid,
-      .projects-grid,
-      .skills-grid,
-      .stat-row,
-      .mini-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-inner,
-      .section-title {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      h1 { font-size: 2.4rem; }
-      .hero { padding-top: 48px; }
-    }
-  </style>
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-center { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2rem; }
+    .hero-right { display: none; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; direction: ltr; }
+    .certs-grid { grid-template-columns: 1fr 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    .divider { margin: 0 1.5rem; }
+  }
+</style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a href="#home" class="brand">Tarek <span>Data Analyst</span></a>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Tarek <span>Guesmi</span></div>
+  <ul class="nav-center">
+    <li><a href="#about"         data-en="About"          data-fr="À propos">About</a></li>
+    <li><a href="#skills"        data-en="Skills"         data-fr="Compétences">Skills</a></li>
+    <li><a href="#projects"      data-en="Projects"       data-fr="Projets">Projects</a></li>
+    <li><a href="#certifications" data-en="Certifications" data-fr="Certifications">Certifications</a></li>
+    <li><a href="#contact"       data-en="Contact"        data-fr="Contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="btn-fr" onclick="setLang('fr')">FR</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-left">
+    <div data-lang="en">
+      <div class="hero-eyebrow">Data Analyst · BI Specialist</div>
+      <h1 class="hero-name">Tarek<br/><span class="blue">Guesmi</span></h1>
+      <p class="hero-role">Where data meets strategy.</p>
+      <p class="hero-bio">I'm a <strong>Data Analyst and BI Specialist</strong> who believes that behind every great decision is a well-told data story. With a Master's in Business Analytics and hands-on industry experience, I don't just build dashboards, I build <strong>clarity</strong>. My work bridges the gap between complex data and real business outcomes. I bring both <strong>technical rigor and strategic thinking</strong> to every project, because good analysis isn't just about what the data says, it's about what it means.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View Projects ↓</a>
+        <a href="mailto:tarek.guesmi@hotmail.com" class="btn-outline">Get in Touch ✉</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">2+</div><div class="stat-label">Years Exp.</div></div>
+        <div><div class="stat-num">7+</div><div class="stat-label">BI Projects</div></div>
+        <div><div class="stat-num">7</div><div class="stat-label">Certifications</div></div>
       </div>
     </div>
-  </nav>
-
-  <header class="hero" id="home">
-    <div class="container hero-grid">
-      <div>
-        <div class="badge">📊 Data Analyst Portfolio</div>
-        <h1>I turn raw data into clear business decisions.</h1>
-        <p>
-          Data analyst focused on dashboards, reporting automation, and performance analysis.
-          I build clean, business-driven solutions with Power BI, SQL, Excel, and DAX.
-        </p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#projects">View Projects</a>
-          <a class="btn btn-secondary" href="#contact">Contact Me</a>
-        </div>
-        <div class="stat-row">
-          <div class="stat-card">
-            <h3>12+</h3>
-            <p>Dashboards built</p>
-          </div>
-          <div class="stat-card">
-            <h3>25%</h3>
-            <p>Avg reporting time saved</p>
-          </div>
-          <div class="stat-card">
-            <h3>3+</h3>
-            <p>Core tools mastered</p>
-          </div>
-        </div>
+    <div data-lang="fr">
+      <div class="hero-eyebrow">Data Analyst · Spécialiste BI</div>
+      <h1 class="hero-name">Tarek<br/><span class="blue">Guesmi</span></h1>
+      <p class="hero-role">Là où les données rencontrent la stratégie.</p>
+      <p class="hero-bio">Je suis un <strong>Data Analyst et Spécialiste BI</strong> convaincu que derrière chaque grande décision se cache une histoire bien racontée par les données. Titulaire d'un Master en Business Analytics et fort d'une expérience terrain, je ne construis pas seulement des tableaux de bord, je construis de la <strong>clarté</strong>. Mon travail fait le lien entre des données complexes et des résultats concrets. J'apporte à chaque projet à la fois <strong>rigueur technique et vision stratégique</strong>, parce qu'une bonne analyse ne se résume pas à ce que disent les données, mais à ce qu'elles signifient.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">Voir les Projets ↓</a>
+        <a href="mailto:tarek.guesmi@hotmail.com" class="btn-outline">Me Contacter ✉</a>
       </div>
-
-      <div class="panel hero-card">
-        <div class="mockup">
-          <div class="mockup-top">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <div class="mockup-body">
-            <div class="mini-cards">
-              <div class="mini-card">
-                <strong>Revenue</strong>
-                <div style="font-size:1.4rem;font-weight:800;margin-top:6px;">$211K</div>
-              </div>
-              <div class="mini-card">
-                <strong>Growth</strong>
-                <div style="font-size:1.4rem;font-weight:800;margin-top:6px; color:#16a34a;">+32%</div>
-              </div>
-              <div class="mini-card">
-                <strong>Visits</strong>
-                <div style="font-size:1.4rem;font-weight:800;margin-top:6px;">4,527</div>
-              </div>
-            </div>
-            <strong>Sales by Category</strong>
-            <div class="bar-chart">
-              <div class="bar" style="height: 52%;"></div>
-              <div class="bar" style="height: 84%;"></div>
-              <div class="bar" style="height: 66%;"></div>
-              <div class="bar" style="height: 96%;"></div>
-              <div class="bar" style="height: 58%;"></div>
-            </div>
-          </div>
-        </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">2+</div><div class="stat-label">Ans d'Exp.</div></div>
+        <div><div class="stat-num">7+</div><div class="stat-label">Projets BI</div></div>
+        <div><div class="stat-num">7</div><div class="stat-label">Certifications</div></div>
       </div>
     </div>
-  </header>
-
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-title">
-        <h2>About Me</h2>
-        <p>I build dashboards that are not just visually clean, but actually useful for decision-making.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-title">⚡ Core Tech Stack</div>
+      <div class="tech-stack">
+        <span class="tech-pill">Power BI</span>
+        <span class="tech-pill">DAX</span>
+        <span class="tech-pill">M / Power Query</span>
+        <span class="tech-pill">SQL</span>
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill">Tableau</span>
+        <span class="tech-pill">PL/SQL</span>
+        <span class="tech-pill">R</span>
+        <span class="tech-pill">ETL</span>
+        <span class="tech-pill">Data Modeling</span>
       </div>
-      <div class="about-grid">
-        <div class="card">
-          <h3>My Focus</h3>
-          <p>
-            I specialize in sales analysis, operational reporting, KPI tracking, and turning messy datasets into structured reporting systems.
-            My goal is always the same: help teams understand what is happening, why it is happening, and what to do next.
-          </p>
+      <div class="card-divider"></div>
+      <div class="currently-label" data-en="Currently" data-fr="Actuellement">Currently</div>
+      <div class="currently-val" data-en="Data Analyst · FMCG Industry" data-fr="Data Analyst · Industrie FMCG">Data Analyst · FMCG Industry</div>
+      <div class="avail-badge"><span class="avail-dot"></span><span data-en="Open to Opportunities" data-fr="Ouvert aux opportunités">Open to Opportunities</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal" data-lang="en">
+    <div class="section-eyebrow">Expertise</div>
+    <h2 class="section-title">Skills & Tools</h2>
+    <p class="section-sub">A focused skill set built through real-world industry projects, spanning business intelligence, data engineering, and statistical analysis.</p>
+  </div>
+  <div class="reveal" data-lang="fr">
+    <div class="section-eyebrow">Expertise</div>
+    <h2 class="section-title">Compétences & Outils</h2>
+    <p class="section-sub">Un ensemble de compétences ciblées, forgées à travers des projets industriels concrets, couvrant la business intelligence, l'ingénierie des données et l'analyse statistique.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="2" y="13" width="4" height="8" rx="1"/><rect x="9" y="8" width="4" height="13" rx="1"/><rect x="16" y="3" width="4" height="18" rx="1"/></svg></div>
+      <div class="skill-cat">Core BI</div>
+      <div class="skill-name" data-en="Business Intelligence" data-fr="Business Intelligence">Business Intelligence</div>
+      <div class="skill-tags">
+        <span class="stag">Power BI</span><span class="stag">DAX</span><span class="stag">M / Power Query</span><span class="stag">Tableau</span><span class="stag light">Data Modeling</span><span class="stag light">KPI Design</span><span class="stag light">Data Warehousing</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v4c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 10v4c0 1.66 3.58 3 8 3s8-1.34 8-3v-4"/></svg></div>
+      <div class="skill-cat" data-en="Data Engineering" data-fr="Ingénierie des Données">Data Engineering</div>
+      <div class="skill-name" data-en="Databases & Querying" data-fr="Bases de données & Requêtes">Databases & Querying</div>
+      <div class="skill-tags">
+        <span class="stag">SQL</span><span class="stag">PL/SQL</span><span class="stag">Oracle DB</span><span class="stag light">ETL Pipelines</span><span class="stag light">Power Query</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="1.5"/><circle cx="10" cy="12" r="1.5"/><circle cx="15" cy="8" r="1.5"/><circle cx="19" cy="5" r="1.5"/><polyline points="3 20 21 4" stroke-dasharray="2 2"/></svg></div>
+      <div class="skill-cat" data-en="Analysis" data-fr="Analyse">Analysis</div>
+      <div class="skill-name" data-en="Statistical Analysis" data-fr="Analyse Statistique">Statistical Analysis</div>
+      <div class="skill-tags">
+        <span class="stag">Python</span><span class="stag">R</span><span class="stag light">Data Validation</span><span class="stag light">Forecasting</span><span class="stag light">Data Cleaning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal" data-lang="en">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Projects & Case Studies</h2>
+    <p class="section-sub">Production-grade dashboards deployed in real commercial environments, built to drive decisions, not just display numbers.</p>
+  </div>
+  <div class="reveal" data-lang="fr">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Projets & Études de cas</h2>
+    <p class="section-sub">Des tableaux de bord de niveau production déployés dans des environnements commerciaux réels, conçus pour orienter les décisions, pas seulement afficher des chiffres.</p>
+  </div>
+  <div class="projects-list">
+
+    <!-- P1: Distribution & Brand Performance -->
+    <div class="project-card reveal">
+      <div class="project-media">
+        <video src="https://raw.githubusercontent.com/keratG/tarek.github.io/main/Distribution%20%26%20Brand%20Performance%20Dashboard.mp4" autoplay muted loop playsinline></video>
+        <div class="media-overlay"></div><div class="proj-num">01</div>
+      </div>
+      <div class="project-info">
+        <div data-lang="en">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Brand Analytics</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Distribution & Brand Performance Dashboard</div>
+          <div class="proj-subtitle">Numeric distribution, revenue concentration & rep-level tracking</div>
+          <p class="proj-desc">Built a dashboard tracking numeric distribution and revenue with daily distribution trends highlighting peak, trough, and average values. It breaks down revenue by pack size and fragrance, flagging concentration risk — two fragrances account for the majority of revenue. A rep-level table details performance across the top brands by revenue and distribution, while summary KPIs show average revenue per distribution point, active brands tracked, and active salesforce count. Filterable by date, region, depot, and product/vendor category.</p>
+          <div class="proj-impact">💡 Two fragrances drive the majority of revenue — a critical concentration risk flagged directly in the dashboard to inform commercial diversification strategy.</div>
         </div>
-        <div class="card">
-          <h3>What I Bring</h3>
-          <p>
-            Strong business sense, clean dashboard design, solid DAX logic, and a sharp eye for making reports simple, readable, and actionable.
-          </p>
+        <div data-lang="fr">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Analyse des Marques</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Tableau de bord Distribution & Performance des Marques</div>
+          <div class="proj-subtitle">Distribution numérique, concentration du CA et suivi par représentant</div>
+          <p class="proj-desc">Tableau de bord de suivi de la distribution numérique et du chiffre d'affaires avec tendances journalières mettant en évidence les pics, creux et moyennes. Décomposition du CA par format et par parfum, avec signalement des risques de concentration : deux parfums représentent la majorité du CA. Un tableau par représentant détaille les performances sur les meilleures marques, avec des KPIs synthétiques : CA moyen par point de distribution, marques actives et force de vente active. Filtrable par date, région, dépôt et catégorie produit/vendeur.</p>
+          <div class="proj-impact">💡 Deux parfums concentrent la majorité du CA, un risque critique identifié dans le tableau de bord pour orienter la stratégie de diversification commerciale.</div>
         </div>
+        <div class="proj-tools"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">M / Power Query</span><span class="ptag">Distribution Analytics</span><span class="ptag">KPI Design</span></div>
+        <div class="proj-links"><a href="https://github.com/keratG/tarek.github.io" target="_blank" class="plink">⌥ GitHub →</a></div>
       </div>
     </div>
-  </section>
 
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="section-title">
-        <h2>Featured Projects</h2>
-        <p>Replace these with your real projects, screenshots, and links.</p>
+    <!-- P2: Inventory & Stock Coverage -->
+    <div class="project-card reverse reveal">
+      <div class="project-media">
+        <video src="https://raw.githubusercontent.com/keratG/tarek.github.io/main/Inventory%20%26%20Stock%20Coverage%20Dashboard%20%E2%80%94%20FMCG.mp4" autoplay muted loop playsinline></video>
+        <div class="media-overlay"></div><div class="proj-num">02</div>
       </div>
-      <div class="projects-grid">
-        <article class="card">
-          <div class="project-cover"></div>
-          <h3>Retail Sales Performance Dashboard</h3>
-          <p>
-            Interactive Power BI dashboard to track revenue, visits, client activity, and performance by category and region.
-          </p>
-          <div class="tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">DAX</span>
-            <span class="tag">Business Analysis</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Live Demo</a>
-            <a href="#">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="project-cover"></div>
-          <h3>Customer Churn Monitoring</h3>
-          <p>
-            Built a churn segmentation model and operational dashboard to identify inactive customers and support retention actions.
-          </p>
-          <div class="tags">
-            <span class="tag">SQL</span>
-            <span class="tag">Excel</span>
-            <span class="tag">Segmentation</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Case Study</a>
-            <a href="#">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="project-cover"></div>
-          <h3>Executive KPI Reporting Pack</h3>
-          <p>
-            Designed a streamlined KPI reporting layer for management with trend tracking, variance analysis, and monthly performance reviews.
-          </p>
-          <div class="tags">
-            <span class="tag">KPIs</span>
-            <span class="tag">Reporting</span>
-            <span class="tag">Visualization</span>
-          </div>
-          <div class="project-links">
-            <a href="#">Preview</a>
-            <a href="#">GitHub</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="skills">
-    <div class="container">
-      <div class="section-title">
-        <h2>Skills & Tools</h2>
-        <p>Keep this section focused on tools you actually use confidently.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-pill">Power BI</div>
-        <div class="skill-pill">DAX</div>
-        <div class="skill-pill">SQL</div>
-        <div class="skill-pill">Excel</div>
-        <div class="skill-pill">Data Cleaning</div>
-        <div class="skill-pill">Dashboard Design</div>
-        <div class="skill-pill">Business Analysis</div>
-        <div class="skill-pill">Reporting Automation</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="card">
-        <h2 style="margin-top:0; font-size:2rem;">Let’s work together</h2>
-        <p style="max-width:650px; margin: 0 auto 18px; color: var(--muted);">
-          Looking for a data analyst who can build clean dashboards, structure reporting, and communicate insights clearly.
-        </p>
-        <div class="cta-row" style="justify-content:center; margin-bottom:0;">
-          <a class="btn btn-primary" href="mailto:yourmail@example.com">yourmail@example.com</a>
-          <a class="btn btn-secondary" href="https://github.com/yourusername" target="_blank">GitHub</a>
-          <a class="btn btn-secondary" href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+      <div class="project-info">
+        <div data-lang="en">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Supply Chain</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Inventory & Stock Coverage Dashboard</div>
+          <div class="proj-subtitle">Stock health monitoring with overstock and stockout alerting</div>
+          <p class="proj-desc">Built an interactive dashboard to monitor stock health across brands, tracking current stock value, sell-through rate, and days of coverage. Color-coded alerts flag overstock and imminent stockout risks per brand. The view includes a brand-level breakdown of stock levels, sell-through rates, and coverage days, alongside a horizontal bar chart for quick stock comparison. Bottom KPI cards highlight brands approaching stockout. Filters by date, brand, product category, and fragrance enable targeted analysis.</p>
+          <div class="proj-impact">💡 An elevated sell-through rate triggered overstock alerts across several brands, enabling operations teams to act before excess inventory impacted working capital.</div>
         </div>
+        <div data-lang="fr">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Chaîne d'approvisionnement</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Tableau de bord Inventaire & Couverture de Stock</div>
+          <div class="proj-subtitle">Surveillance de la santé des stocks avec alertes de surstockage et de rupture</div>
+          <p class="proj-desc">Tableau de bord interactif de surveillance de la santé des stocks par marque, avec suivi de la valeur de stock, du taux d'écoulement et des jours de couverture. Des alertes codées par couleur signalent le surstockage et les risques de rupture imminents par marque. La vue inclut une décomposition par marque des niveaux de stock, taux d'écoulement et jours de couverture, avec un graphique horizontal pour une comparaison rapide. Des cartes KPI en bas signalent les marques en approche de rupture. Filtres par date, marque, catégorie produit et parfum.</p>
+          <div class="proj-impact">💡 Un taux d'écoulement élevé a déclenché des alertes de surstockage sur plusieurs marques, permettant aux équipes opérationnelles d'agir avant d'impacter le besoin en fonds de roulement.</div>
+        </div>
+        <div class="proj-tools"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">Conditional Alerting</span><span class="ptag">Supply Chain</span><span class="ptag">Inventory KPIs</span></div>
+        <div class="proj-links"><a href="https://github.com/keratG/tarek.github.io" target="_blank" class="plink">⌥ GitHub →</a></div>
       </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">© 2026 Tarek Data Analyst Portfolio</div>
-  </footer>
+    <!-- P3: Multi-Year Market Growth -->
+    <div class="project-card reveal">
+      <div class="project-media">
+        <img src="https://raw.githubusercontent.com/keratG/tarek.github.io/main/Multi-Year%20Market%20Growth%20%26%20Company%20Benchmarking%20Dashboard.png" alt="Multi-Year Market Growth Dashboard"/>
+        <div class="media-overlay"></div><div class="proj-num">03</div>
+      </div>
+      <div class="project-info">
+        <div data-lang="en">
+          <div class="proj-meta"><span class="proj-sector">Strategic · Competitive Intel</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Multi-Year Market Growth & Company Benchmarking</div>
+          <div class="proj-subtitle">Multi-year revenue analysis, CAGR tracking & competitive landscape</div>
+          <p class="proj-desc">Built a dashboard analyzing multiple years of cumulative revenue with a strong CAGR. A stacked bar chart tracks yearly revenue by company, highlighting strong growth phases and the most recent dip. Market share breakdown shows the dominant player alongside a fast-rising newcomer that grew significantly in just two years. Year-over-year tables detail revenue and distribution evolution by company, while KPI cards surface key insights — best year, toughest year, market leader, and fastest-growing entrant.</p>
+          <div class="proj-impact">💡 A fast-rising newcomer grew significantly in just two years, signaling a market disruption captured early through this benchmarking dashboard and surfaced to strategic decision-makers.</div>
+        </div>
+        <div data-lang="fr">
+          <div class="proj-meta"><span class="proj-sector">Stratégique · Intelligence Concurrentielle</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Croissance Marché Multi-Années & Benchmarking Concurrentiel</div>
+          <div class="proj-subtitle">Analyse pluriannuelle du CA, suivi du TCAC et paysage concurrentiel</div>
+          <p class="proj-desc">Tableau de bord analysant plusieurs années de chiffre d'affaires cumulé avec un fort TCAC. Un graphique en barres empilées suit le CA annuel par entreprise, mettant en évidence les phases de forte croissance et la dernière baisse enregistrée. La répartition des parts de marché montre le leader du marché face à un nouvel entrant en forte croissance dont la progression a été spectaculaire en deux ans. Des tableaux YoY détaillent l'évolution du CA et de la distribution par entreprise, avec des cartes KPI synthétisant les insights clés.</p>
+          <div class="proj-impact">💡 Un nouvel entrant a multiplié sa présence de façon spectaculaire en deux ans, une disruption marché captée précocement par ce dashboard et remontée aux décideurs stratégiques.</div>
+        </div>
+        <div class="proj-tools"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">CAGR Analysis</span><span class="ptag">Competitive Benchmarking</span><span class="ptag">Strategic Storytelling</span></div>
+        <div class="proj-links"><a href="https://github.com/keratG/tarek.github.io" target="_blank" class="plink">⌥ GitHub →</a></div>
+      </div>
+    </div>
+
+    <!-- P4: Sales Performance by Product -->
+    <div class="project-card reverse reveal">
+      <div class="project-media">
+        <video src="https://raw.githubusercontent.com/keratG/tarek.github.io/main/Sales%20Performance%20Dashboard%20par%20prod.mp4" autoplay muted loop playsinline></video>
+        <div class="media-overlay"></div><div class="proj-num">04</div>
+      </div>
+      <div class="project-info">
+        <div data-lang="en">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Category Management</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Sales Performance Dashboard — Product Hierarchy</div>
+          <div class="proj-subtitle">Drill-down revenue analysis from category to SKU level</div>
+          <p class="proj-desc">Built an interactive dashboard to analyze revenue across a multi-level product hierarchy: Category, Brand, Fragrance, Pack Size, and SKU. It helps commercial teams identify top contributors and spot concentration risks at a glance. The dashboard features a drill-down tree decomposition, a category mix pie chart showing the leading category drives approximately half of revenue, and a brand contribution table revealing the top two brands account for a significant share of sales. Users can filter by date range, business unit, and toggle between revenue and volume views.</p>
+          <div class="proj-impact">💡 The leading category drives approximately half of total revenue and the top two brands account for a significant share of sales, making concentration risk immediately visible for category managers.</div>
+        </div>
+        <div data-lang="fr">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Gestion des Catégories</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Tableau de bord Performance des Ventes par Produit</div>
+          <div class="proj-subtitle">Analyse du CA en drill-down de la catégorie au SKU</div>
+          <p class="proj-desc">Tableau de bord interactif analysant le chiffre d'affaires selon une hiérarchie produit multi-niveaux : Catégorie, Marque, Parfum, Format et SKU. Il aide les équipes commerciales à identifier les contributeurs clés et détecter les risques de concentration. Le tableau de bord intègre une décomposition en arborescence drill-down, un graphique circulaire de mix catégories montrant que la catégorie principale génère environ la moitié du CA, et un tableau de contribution par marque révélant que les deux premières marques représentent une part significative des ventes. Filtrable par période, activité et bascule CA/Volume.</p>
+          <div class="proj-impact">💡 La catégorie principale génère à elle seule environ la moitié du CA total, et les deux premières marques concentrent une part significative des ventes, rendant le risque de concentration immédiatement visible.</div>
+        </div>
+        <div class="proj-tools"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">Hierarchical Modeling</span><span class="ptag">Drill-Down Design</span><span class="ptag">Category Management</span></div>
+        <div class="proj-links"><a href="https://github.com/keratG/tarek.github.io" target="_blank" class="plink">⌥ GitHub →</a></div>
+      </div>
+    </div>
+
+    <!-- P5: Sales Force Performance -->
+    <div class="project-card reveal">
+      <div class="project-media">
+        <video src="https://raw.githubusercontent.com/keratG/tarek.github.io/main/Page%20Sales%20Performance.mp4" autoplay muted loop playsinline></video>
+        <div class="media-overlay"></div><div class="proj-num">05</div>
+      </div>
+      <div class="project-info">
+        <div data-lang="en">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Field Productivity</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Sales Force Performance Dashboard</div>
+          <div class="proj-subtitle">Rep-level productivity tracking with conversion rate trending</div>
+          <p class="proj-desc">Built a dashboard to track field sales team productivity, monitoring revenue, client visits, numeric distribution, and daily visit rate per salesperson. A daily trend chart tracks conversion rate evolution with a 7-day moving average, while a stacked bar chart compares each salesperson's visit coverage vs. actual distribution achieved. A detailed table breaks down each salesperson's KPIs by product category: revenue, invoices, distribution, average drop size, and average revenue per client, enabling managers to pinpoint underperformers and coaching opportunities.</p>
+          <div class="proj-impact">💡 The 7-day moving average on conversion rates revealed systematic weekly dips every Monday, prompting a route planning review that improved early-week field efficiency.</div>
+        </div>
+        <div data-lang="fr">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Productivité Terrain</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Tableau de bord Performance de la Force de Vente</div>
+          <div class="proj-subtitle">Suivi de productivité par représentant avec tendance du taux de conversion</div>
+          <p class="proj-desc">Tableau de bord de suivi de la productivité de l'équipe commerciale terrain, avec monitoring du chiffre d'affaires, des visites clients, de la distribution numérique et du taux de visite journalier par représentant. Un graphique de tendance journalière suit l'évolution du taux de conversion avec une moyenne mobile à 7 jours, tandis qu'un graphique en barres empilées compare la couverture de visites vs la distribution réalisée. Un tableau détaillé décompose les KPIs de chaque représentant par catégorie produit : CA, factures, distribution, taille de commande moyenne et CA moyen par client, permettant aux managers d'identifier précisément les sous-performeurs et les opportunités de coaching.</p>
+          <div class="proj-impact">💡 La moyenne mobile à 7 jours sur les taux de conversion a révélé des baisses systématiques chaque lundi, déclenchant une révision de la planification des tournées qui a amélioré l'efficacité terrain en début de semaine.</div>
+        </div>
+        <div class="proj-tools"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">Moving Average</span><span class="ptag">Sales Force Analytics</span><span class="ptag">Rep Benchmarking</span></div>
+        <div class="proj-links"><a href="https://github.com/keratG/tarek.github.io" target="_blank" class="plink">⌥ GitHub →</a></div>
+      </div>
+    </div>
+
+    <!-- P6: Sales Performance Beverages & Food -->
+    <div class="project-card reverse reveal">
+      <div class="project-media">
+        <video src="https://raw.githubusercontent.com/keratG/tarek.github.io/main/Sales%20Force%20Performance%20Dashboard.mp4" autoplay muted loop playsinline></video>
+        <div class="media-overlay"></div><div class="proj-num">06</div>
+      </div>
+      <div class="project-info">
+        <div data-lang="en">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Sales Performance</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Sales Performance Dashboard — Beverages & Food</div>
+          <div class="proj-subtitle">Multi-brand revenue tracking with regional and depot breakdowns</div>
+          <p class="proj-desc">Built an interactive dashboard to monitor revenue and distribution performance across brands, depots, and regions for a multi-category FMCG business covering Beverages and Food. The report enables commercial managers to track daily and periodic revenue evolution, compare brand contributions, and assess geographic performance. Toggleable views between revenue and numeric distribution allow the same dashboard to serve both commercial and field operations teams, reducing the need for multiple reports.</p>
+          <div class="proj-impact">💡 A single dashboard serves both commercial and field teams by toggling between revenue and distribution views, eliminating duplicate reporting and aligning decisions across functions.</div>
+        </div>
+        <div data-lang="fr">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Performance Commerciale</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Tableau de bord Performance des Ventes — Boissons & Alimentation</div>
+          <div class="proj-subtitle">Suivi du CA multi-marques avec ventilation régionale et par dépôt</div>
+          <p class="proj-desc">Tableau de bord interactif de suivi du chiffre d'affaires et de la performance de distribution par marques, dépôts et régions pour un groupe FMCG multi-catégories couvrant les Boissons et l'Alimentation. Il permet aux managers commerciaux de suivre l'évolution journalière et périodique du CA, comparer les contributions par marque et évaluer les performances géographiques. Des vues basculables entre CA et distribution numérique permettent au même tableau de bord de servir à la fois les équipes commerciales et terrain, réduisant le besoin de rapports multiples.</p>
+          <div class="proj-impact">💡 Un seul tableau de bord sert les équipes commerciales et terrain en basculant entre CA et distribution numérique, éliminant les rapports redondants et alignant les décisions entre fonctions.</div>
+        </div>
+        <div class="proj-tools"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">M / Power Query</span><span class="ptag">Multi-Category</span><span class="ptag">Regional Analysis</span></div>
+        <div class="proj-links"><a href="https://github.com/keratG/tarek.github.io" target="_blank" class="plink">⌥ GitHub →</a></div>
+      </div>
+    </div>
+
+    <!-- P7: Sales Force YoY -->
+    <div class="project-card reveal">
+      <div class="project-media">
+        <video src="https://raw.githubusercontent.com/keratG/tarek.github.io/main/Sales%20Force%20YoY%20Performance%20%26%20Alerting%20Dashboard.mp4" autoplay muted loop playsinline></video>
+        <div class="media-overlay"></div><div class="proj-num">07</div>
+      </div>
+      <div class="project-info">
+        <div data-lang="en">
+          <div class="proj-meta"><span class="proj-sector">FMCG · YoY Benchmarking</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Sales Force YoY Performance & Alerting Dashboard</div>
+          <div class="proj-subtitle">Automated insight generation with Top 6 / Flop 6 ranking</div>
+          <p class="proj-desc">Built a dashboard comparing sales team performance against the prior year, with headline KPIs showing revenue with strong YoY growth, distribution, visits, and client coverage — all with YoY growth indicators. Insight cards automatically surface top growers, underperformers requiring action, and reps with high visit activity but disproportionate revenue conversion. Top 6 / Flop 6 bar charts rank reps by revenue growth and decline, while a field intensity chart tracks average daily visits. A detailed table provides full rep-level metrics including visit evolution, client evolution, working days, and revenue — enabling granular coaching decisions.</p>
+          <div class="proj-impact">💡 Automated insight cards identified reps with high visit volume but low revenue conversion, allowing managers to target coaching efforts precisely rather than reviewing all reps manually.</div>
+        </div>
+        <div data-lang="fr">
+          <div class="proj-meta"><span class="proj-sector">FMCG · Benchmark YoY</span><span class="proj-year">· 2025–2026</span></div>
+          <div class="proj-title">Tableau de bord Performance Force de Vente YoY & Alertes</div>
+          <div class="proj-subtitle">Génération automatique d'insights avec classement Top 6 / Flop 6</div>
+          <p class="proj-desc">Tableau de bord comparant la performance de l'équipe commerciale avec l'année précédente, avec des KPIs headlines montrant le chiffre d'affaires en forte croissance vs N-1, la distribution, les visites et la couverture clients, tous avec indicateurs de croissance YoY. Des cartes d'insight identifient automatiquement les meilleurs progresseurs, les sous-performeurs nécessitant une action, et les représentants avec une activité de visite élevée mais une conversion revenue disproportionnée. Les graphiques Top 6 / Flop 6 classent les représentants par croissance et déclin du CA, tandis qu'un graphique d'intensité terrain suit le taux de visite journalier moyen. Un tableau détaillé fournit les métriques complètes par représentant.</p>
+          <div class="proj-impact">💡 Les cartes d'insight automatisées ont identifié les représentants à fort volume de visites mais faible conversion CA, permettant aux managers de cibler précisément leurs efforts de coaching sans avoir à revoir tous les représentants manuellement.</div>
+        </div>
+        <div class="proj-tools"><span class="ptag">Power BI</span><span class="ptag">DAX</span><span class="ptag">YoY Analysis</span><span class="ptag">Automated Insights</span><span class="ptag">Exception Alerting</span></div>
+        <div class="proj-links"><a href="https://github.com/keratG/tarek.github.io" target="_blank" class="plink">⌥ GitHub →</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="reveal" data-lang="en">
+    <div class="section-eyebrow">Credentials</div>
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-sub">Industry-recognized credentials from leading data & AI platforms.</p>
+  </div>
+  <div class="reveal" data-lang="fr">
+    <div class="section-eyebrow">Certifications</div>
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-sub">Certifications reconnues par l'industrie, délivrées par les principales plateformes de données et d'IA.</p>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card reveal"><span class="cert-badge microsoft">Microsoft</span><div class="cert-name">PL-300: Microsoft Power BI Data Analyst</div><div class="cert-id">Microsoft Certified</div><div class="cert-year">2026</div></div>
+    <div class="cert-card reveal"><span class="cert-badge datacamp">DataCamp</span><div class="cert-name">Data Analyst Associate</div><div class="cert-id">DataCamp Certification Program</div><div class="cert-year">2026</div></div>
+    <div class="cert-card reveal"><span class="cert-badge datacamp">DataCamp</span><div class="cert-name">Python Data Associate</div><div class="cert-id">DataCamp Certification Program</div><div class="cert-year">2026</div></div>
+    <div class="cert-card reveal"><span class="cert-badge datacamp">DataCamp</span><div class="cert-name">SQL Associate</div><div class="cert-id">DataCamp Certification Program</div><div class="cert-year">2025</div></div>
+    <div class="cert-card reveal"><span class="cert-badge nvidia">NVIDIA DLI</span><div class="cert-name">Building Transformer-Based NLP Applications</div><div class="cert-id">NVIDIA Deep Learning Institute</div><div class="cert-year">2023</div></div>
+    <div class="cert-card reveal"><span class="cert-badge nvidia">NVIDIA DLI</span><div class="cert-name">Applications of AI for Anomaly Detection</div><div class="cert-id">NVIDIA Deep Learning Institute</div><div class="cert-year">2023</div></div>
+    <div class="cert-card reveal"><span class="cert-badge nvidia">NVIDIA DLI</span><div class="cert-name">Applications of AI for Predictive Maintenance</div><div class="cert-id">NVIDIA Deep Learning Institute</div><div class="cert-year">2023</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal" data-lang="en"><div class="section-eyebrow">Let's Connect</div><h2 class="section-title">Contact</h2></div>
+  <div class="reveal" data-lang="fr"><div class="section-eyebrow">Connectons-nous</div><h2 class="section-title">Contact</h2></div>
+  <div class="contact-wrap reveal">
+    <div class="contact-left">
+      <div data-lang="en">
+        <h3>Open to opportunities & collaborations</h3>
+        <p>Whether you're looking for a skilled Data Analyst, a BI consultant, or want to collaborate on a data project, I'd love to hear from you. Available for full-time roles, freelance missions, and consulting engagements.</p>
+      </div>
+      <div data-lang="fr">
+        <h3>Ouvert aux opportunités & collaborations</h3>
+        <p>Que vous recherchiez un Data Analyst, un consultant BI, ou souhaitiez collaborer sur un projet data, je serais ravi d'échanger. Disponible pour des postes, missions freelance et engagements de conseil.</p>
+      </div>
+      <div class="contact-items">
+        <a href="mailto:tarek.guesmi@hotmail.com" class="ci"><div class="ci-icon">✉</div><div><div class="ci-label">Email</div><div class="ci-value">tarek.guesmi@hotmail.com</div></div></a>
+        <a href="https://www.linkedin.com/in/tarek-guesmi" target="_blank" class="ci"><div class="ci-icon">in</div><div><div class="ci-label">LinkedIn</div><div class="ci-value">linkedin.com/in/tarek-guesmi</div></div></a>
+        <a href="https://github.com/keratG" target="_blank" class="ci"><div class="ci-icon">⌥</div><div><div class="ci-label">GitHub</div><div class="ci-value">github.com/keratG</div></div></a>
+        <div class="ci" style="cursor:default;"><div class="ci-icon">📍</div><div><div class="ci-label" data-en="Location" data-fr="Localisation">Location</div><div class="ci-value">Aouina, Tunis, Tunisia</div></div></div>
+        <div class="ci" style="cursor:default;"><div class="ci-icon">📞</div><div><div class="ci-label" data-en="Phone" data-fr="Téléphone">Phone</div><div class="ci-value">+216 52 376 607</div></div></div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div data-lang="en"><h4>Let's build something data-driven together</h4><p>I'm passionate about transforming complex data into clear, impactful insights. If you have a project, a role, or just want to talk data, my inbox is always open.</p></div>
+      <div data-lang="fr"><h4>Construisons ensemble quelque chose de data-driven</h4><p>Je suis passionné par la transformation de données complexes en insights clairs et impactants. Projet, opportunité ou simple échange autour de la data, ma boîte mail est toujours ouverte.</p></div>
+      <div class="avail-badge"><span class="avail-dot"></span><span data-en="Available for Freelance & Full-time" data-fr="Disponible — Freelance & Temps plein">Available for Freelance & Full-time</span></div>
+      <a href="mailto:tarek.guesmi@hotmail.com" class="btn-white">✉ <span data-en="Send a Message" data-fr="Envoyer un message">Send a Message</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TG</div>
+  <p>© 2026 Tarek Guesmi · Data Analyst & BI Specialist</p>
+  <p data-en="Built for GitHub Pages" data-fr="Hébergé sur GitHub Pages">Built for GitHub Pages</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang="en"]').forEach(el => { el.style.display = lang === 'en' ? '' : 'none'; });
+    document.querySelectorAll('[data-lang="fr"]').forEach(el => { el.style.display = lang === 'fr' ? '' : 'none'; });
+    document.querySelectorAll('[data-en][data-fr]:not([data-lang])').forEach(el => {
+      if (!el.closest('[data-lang]')) el.textContent = lang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+    });
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('html-root').setAttribute('lang', lang);
+  }
+  document.addEventListener('DOMContentLoaded', () => setLang('en'));
+  if (document.readyState !== 'loading') setLang('en');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 90); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-center a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 160) current = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${current}`));
+  });
+</script>
 </body>
 </html>
